@@ -13,18 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					null,
-					null,
-					{
-						"name": "Source",
-						"value": "input//cars.csv"
-					},
-					{
-						"name": "Destination",
-						"value": "dbo.Cars"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
