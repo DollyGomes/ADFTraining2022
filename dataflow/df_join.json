@@ -1,0 +1,29 @@
+{
+	"name": "df_join",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Movies_DS1",
+						"type": "DatasetReference"
+					},
+					"name": "Movies"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "MoviesClean"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: false,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Movies",
+				"Movies derive(titleNew = ERROR_FUNCTION('')) ~> MoviesClean"
+			]
+		}
+	}
+}
