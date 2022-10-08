@@ -10,6 +10,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "Movies"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [],
@@ -17,7 +20,9 @@
 			"scriptLines": [
 				"source(allowSchemaDrift: false,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Movies"
+				"     ignoreNoFilesFound: false) ~> Movies",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1"
 			]
 		}
 	}
