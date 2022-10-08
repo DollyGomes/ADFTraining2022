@@ -13,16 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [
-				{
-					"name": "MoviesClean"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(allowSchemaDrift: false,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Movies",
-				"Movies derive(titleNew = ERROR_FUNCTION('')) ~> MoviesClean"
+				"     ignoreNoFilesFound: false) ~> Movies"
 			]
 		}
 	}
