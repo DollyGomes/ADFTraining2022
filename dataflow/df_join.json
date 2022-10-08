@@ -12,7 +12,11 @@
 					"name": "Movies"
 				},
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "MoviesDB_DS",
+						"type": "DatasetReference"
+					},
+					"name": "MoviesDB"
 				}
 			],
 			"sinks": [],
@@ -27,7 +31,8 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Movies",
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> MoviesDB"
 			]
 		}
 	}
