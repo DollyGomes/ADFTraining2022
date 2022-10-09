@@ -33,7 +33,8 @@
 					"name": "MoviesClean"
 				},
 				{
-					"name": "joinMovies"
+					"name": "joinMovies",
+					"description": "Left outer join on 'MoviesClean' and 'MoviesDB'"
 				},
 				{
 					"name": "select1"
@@ -60,7 +61,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MoviesDB",
 				"Movies derive(titleNew = toString(left(title,length(title)-6))) ~> MoviesClean",
-				"MoviesClean, MoviesDB join(titleNew == MoviesDB@title,",
+				"MoviesClean, MoviesDB join(Movies@title == MoviesDB@title,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
