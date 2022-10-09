@@ -26,6 +26,12 @@
 			"transformations": [
 				{
 					"name": "MoviesClean"
+				},
+				{
+					"name": "joinMovies"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -50,7 +56,20 @@
 				"     ignoreNoFilesFound: false) ~> MoviesDB",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false) ~> source1",
-				"Movies derive(titleNew = toString(left(title,length(title)-6))) ~> MoviesClean"
+				"Movies derive(titleNew = toString(left(title,length(title)-6))) ~> MoviesClean",
+				"MoviesClean, MoviesDB join(titleNew == MoviesDB@title,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinMovies",
+				"joinMovies select(mapColumn(",
+				"          movieId,",
+				"          title,",
+				"          genres,",
+				"          titleNew",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
