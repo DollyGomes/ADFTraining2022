@@ -17,9 +17,6 @@
 						"type": "DatasetReference"
 					},
 					"name": "MoviesDB"
-				},
-				{
-					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -62,8 +59,6 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MoviesDB",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1",
 				"Movies derive(titleNew = toString(left(title,length(title)-6))) ~> MoviesClean",
 				"MoviesClean, MoviesDB join(titleNew == MoviesDB@title,",
 				"     joinType:'inner',",
