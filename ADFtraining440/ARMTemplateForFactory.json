@@ -161,6 +161,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
+						"fileName": "op.csv",
 						"container": "output"
 					},
 					"columnDelimiter": ",",
