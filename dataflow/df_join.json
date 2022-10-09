@@ -17,10 +17,17 @@
 						"type": "DatasetReference"
 					},
 					"name": "MoviesDB"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "MoviesClean"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          movieId as string,",
@@ -40,7 +47,10 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> MoviesDB"
+				"     ignoreNoFilesFound: false) ~> MoviesDB",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
+				"Movies derive(titleNew = toString(left(title,length(title)-6))) ~> MoviesClean"
 			]
 		}
 	}
