@@ -41,6 +41,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('GetTables').output.value",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "ExportCSV",
