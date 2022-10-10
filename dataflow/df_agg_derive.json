@@ -19,12 +19,12 @@
 						"referenceName": "MoviesOpCSV",
 						"type": "DatasetReference"
 					},
-					"name": "ExtractYearTitle"
+					"name": "MoviesClean"
 				}
 			],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
+					"name": "ExtractYearTitle"
 				}
 			],
 			"scriptLines": [
@@ -36,13 +36,14 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MoviesV1",
-				"MoviesV1 derive(Year =  toInteger(trim(right(title, 6), '()')),",
-				"          title = toString(left(title, length(title)-6))) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"MoviesV1 derive(Year = toInteger(trim(right(title, 6), '()')),",
+				"          title = toString(left(title, length(title)-6))) ~> ExtractYearTitle",
+				"ExtractYearTitle sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['MoviesClean.csv'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> ExtractYearTitle"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> MoviesClean"
 			]
 		}
 	}
