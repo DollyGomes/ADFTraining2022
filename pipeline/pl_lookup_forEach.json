@@ -57,7 +57,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "ExportCSV",
+							"name": "Exp_CSV",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
