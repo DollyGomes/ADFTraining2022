@@ -27,6 +27,19 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "ForEachTableList",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "GetTables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": []
 			}
 		],
 		"annotations": []
