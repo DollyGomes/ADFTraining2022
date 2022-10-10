@@ -82,7 +82,8 @@
 				"     partitionFileNames:['MoviesOp_09272022.csv'],",
 				"     truncate: true,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> MoviesOP"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('roundRobin', 2)) ~> MoviesOP"
 			]
 		}
 	}
