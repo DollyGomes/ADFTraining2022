@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "scd1",
+				"name": "df_dim_customer_scdtype1",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -20,8 +20,8 @@
 						"type": "DataFlowReference"
 					},
 					"compute": {
-						"coreCount": 32,
-						"computeType": "MemoryOptimized"
+						"coreCount": 8,
+						"computeType": "General"
 					},
 					"traceLevel": "Fine"
 				}
