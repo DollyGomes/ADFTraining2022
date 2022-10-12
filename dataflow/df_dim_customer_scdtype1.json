@@ -84,7 +84,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> DimCustomer",
-				"CustomerSource derive(HashKey = ERROR_FUNCTION('')) ~> CreateHashKey",
+				"CustomerSource derive(HashKey = sha2(256,iifNull(firstname, '')+iifNull(middlename, '')+iifNull(lastname, ''))) ~> CreateHashKey",
 				"CreateHashKey, DimCustomer exists(CreateHashKey@HashKey == DimCustomer@HashKey,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> Exist",
