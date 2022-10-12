@@ -86,7 +86,7 @@
 				"     format: 'table') ~> DimCustomer",
 				"CustomerSource derive(HashKey = ERROR_FUNCTION('')) ~> CreateHashKey",
 				"CreateHashKey, DimCustomer exists(CreateHashKey@HashKey == DimCustomer@HashKey,",
-				"     negate:false,",
+				"     negate:true,",
 				"     broadcast: 'auto')~> Exist",
 				"Exist, DimCustomer lookup(CustomerSource@CustomerID == DimCustomer@CustomerID,",
 				"     multiple: false,",
