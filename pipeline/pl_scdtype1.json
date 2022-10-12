@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "df_dim_customer_scdtype1",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"HashKey": "sha2(256, iifNull(Title,'')+iifNull(FirstName,'')+iifNull(MiddleName,'')+iifNull(LastName,'')+iifNull(Suffix,'')+iifNull(CompanyName,'')+iifNull(SalesPerson,'')+iifNull(EmailAddress,'')+iifNull(Phone,''))"
+						}
 					},
 					"compute": {
 						"coreCount": 8,
