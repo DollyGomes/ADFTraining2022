@@ -281,8 +281,7 @@
 									"CustomerSource": {},
 									"DimCustomer": {},
 									"sinkTarget": {}
-								},
-								"linkedServiceParameters": {}
+								}
 							},
 							"staging": {},
 							"compute": {
@@ -300,8 +299,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/df_dim_customer_scdtype1')]",
-				"[concat(variables('factoryId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+				"[concat(variables('factoryId'), '/dataflows/df_dim_customer_scdtype1')]"
 			]
 		},
 		{
@@ -1012,9 +1010,11 @@
 						"          HashKey as string",
 						"     ),",
 						"     deletable:false,",
-						"     insertable:true,",
+						"     insertable:false,",
 						"     updateable:false,",
-						"     upsertable:false,",
+						"     upsertable:true,",
+						"     keys:['CustomerID'],",
+						"     skipKeyWrites:true,",
 						"     format: 'table',",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
